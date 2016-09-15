@@ -1,0 +1,16 @@
+#navbar {
+    background-color: red;
+}
+    
+   
+   
+    
+    
+#navbar{
+background-color: green;
+display:inline-block;
+padding: 10px;
+border: 2px solid purple;
+color: blue;
+margin: 5px;
+}
