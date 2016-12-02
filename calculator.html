@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title> Calculator</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+    <style>
+        body {
+           background-color:silver; 
+        }
+    </style>
+    </head>
+    <body>
+        <ul id="navbar">
+            <li><a href="index.html#AboutMe"> About Me </a> </li>
+            <li><a href="Hardware.html"> Hardware </a> </li>
+            <li><a href="howtohardware.html"> How To </a> </li>
+            <li><a href="changer.html"> Background Color Changer</a></li>
+            <li><a href="calculator.html"> Calculator </a> </li>
+            <li><a href="todolist.html"> Todo List </a> </li>
+            <li><a href="howtocalculator.html"> How To #2 </a></li>
+            <li><a href="#"> Vindinium </a> </li>
+            <li><a href="#"> Big Project </a> </li>
+        </ul>
+      <h1> Calculator</h1>  
+        Number 1 <input id="number1"> <br>
+        Number 2 <input id="number2"> <br> <br>
+        Operation <br>
+        <select id="operation">
+            <option value="Add">+</option>
+            <option value="Sub">-</option>
+            <option value="Mul">*</option>
+            <option value="Div">/</option>
+            <option value="GT"> Greater Than</option>
+            <option value="EQ"> Equal</option>
+        </select> <br> <br>
+        <button id="calculate">Calculate</button><br><br>
+        <div id="result"></div>
+        <script src="calculator.js"></script>
+    </body>
+</html>

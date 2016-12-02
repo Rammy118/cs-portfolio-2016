@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background-color:silver;
+        }
+    </style>
+</head>
+<body>
+    <ul id="navbar">
+            <li><a href="index.html#AboutMe"> About Me </a> </li>
+            <li><a href="Hardware.html"> Hardware </a> </li>
+            <li><a href="howtohardware.html"> How To </a> </li>
+            <li><a href="changer.html"> Background Color Changer</a></li>
+            <li><a href="calculator.html"> Calculator </a> </li>
+            <li><a href="todolist.html"> Todo List </a> </li>
+            <li><a href="howtocalculator.html"> How To #2 </a></li>
+            <li><a href="#"> Vindinium </a> </li>
+            <li><a href="#"> Big Project </a> </li>
+        </ul>
+        
+        <h1> How To </h1>
+        <p>
+            To add in the text boxes for numbers one and two, you add in this html code:
+            <code>
+                <pre>
+                    Number 1 &lt;input id=&quot;number1&quot;&gt; &lt;br&gt;
+                    Number 2 &lt;input id=&quot;number2&quot;&gt; &lt;br&gt; &lt;br&gt;
+                </pre>
+            </code>
+            The input id is what you are supposed to put in the text box next to it is. The break tags are so that they can be on two different lines.
+            For the dropdown menu, you have to add in this code:
+            <code>
+                <pre>
+                    Operation &lt;br&gt;
+        &lt;select id=&quot;operation&quot;&gt;
+            &lt;option value=&quot;Add&quot;&gt;+&lt;/option&gt;
+            &lt;option value=&quot;Sub&quot;&gt;-&lt;/option&gt;
+            &lt;option value=&quot;Mul&quot;&gt;*&lt;/option&gt;
+            &lt;option value=&quot;Div&quot;&gt;/&lt;/option&gt;
+            &lt;option value=&quot;GT&quot;&gt; Greater Than&lt;/option&gt;
+            &lt;option value=&quot;EQ&quot;&gt; Equal&lt;/option&gt;
+        &lt;/select&gt; &lt;br&gt; &lt;br&gt;
+                </pre>
+            </code>
+            The option values are what the options of the dropdown menu are supposed to do to the number (like add, subtract, multiply, or divide the two numbers you put or determine if the number in the first text input is greater than the number in the second input or to determine if they are both equal. If you put two different numbers and selected the greater than option, the result would say "true" if the number in the first input is larger, or "false" if the number in the second input is larger. If you put in two of the same number and selected the equal option and clicked calculate, it would say "true", but if you did just that, except the two numbers are different, then it will say "false")
+            To add the button, you put in this code:
+            <code>
+                <pre>
+                     &lt;button id=&quot;calculate&quot;&gt;Calculate&lt;/button&gt;&lt;br&gt;&lt;br&gt;
+                </pre>
+            </code>
+        The button id is what gives the button its function.
+        To make the result showing up after clicking the calculate button possible, you start by adding in this code:
+        <code>
+            <pre>
+                &lt;div id=&quot;result&quot;&gt;&lt;/div&gt;
+            </pre>
+        </code>
+        This div function is what makes the result show up after clicking the calculate button.
+        To link the html to the javascript, you add in this code:
+        <code>
+            <pre>
+                &lt;script src=&quot;calculator.js&quot;&gt;&lt;/script&gt;
+            </pre>
+        </code>
+        The script tag is what links the html to the javascript so that the codes in the javascript can be used on the document.
+        </p>
+        
+        <p>
+            To give the ids their functions, you have to add in this code:
+            <code>
+                <pre>
+                    var number1 = document.getElementById(\"number1\");\r\nvar number2 = document.getElementById(\"number2\");\r\nvar operator = document.getElementById(\"operation\");\r\nvar calculateButton = document.getElementById (\"calculate\");\r\nvar resultDiv = document.getElementById (\"result\");
+                </pre>
+            </code>
+            The vars are variables. They take the ids and make the calculator work.
+            <code>
+                <pre>
+                    calculateButton.addEventListener(\"click\", function(){\r\n var n1 = Number(number1.value);\r\n var n2 = Number(number2.value);\r\n var op = operator.value;\r\n var result;
+                </pre>
+            </code>
+            The code above is what give the button its function. That is how when you type the tow numbers and choose the otion from the dropdown menu. 
+            To make the dropdown menu, you need to put in this code:
+            <code>
+                <pre>
+                    if (op == \"Add\") {\r\n        result = n1+n2;\r\n    } else if (op == \"Sub\") {\r\n        result = n1-n2;\r\n    } else if (op == \"Mul\") {\r\n        result = n1*n2;\r\n    } else if (op == \"Div\") {\r\n        result = n1\/n2;\r\n    } else if (op == \"GT\") {\r\n        result = n1 > n2;\r\n    } else if (op == \"EQ\") {\r\n        result = n1 == n2;\r\n    } 
+                </pre>
+            </code>
+            The op means operation and the if statements are what make the options work.
+        To make the result show up, add in this code:
+        <code>
+            <pre>
+                resultDiv.innerHTML = \"Result: \" + result;\r\n});
+            </pre>
+        </code>
+        </p>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
