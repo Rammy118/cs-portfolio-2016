@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="navbar.css" type="text/css" />
+        
+        <title> Vindinium</title>
+        <style>
+            body{
+                background-color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="navbar">
+            <li><a href="index.html#AboutMe"> About Me </a> </li>
+            <li><a href="Hardware.html"> Hardware </a> </li>
+            <li><a href="howtohardware.html"> How To </a></li>
+            <li><a href="changer.html"> Background Color Changer</a></li>
+            <li><a href="calculator.html"> Calculator </a> </li>
+            <li><a href="todolist.html"> Todo List </a> </li>
+            <li><a href="howtocalculator.html"> How To #2 </a></li>
+            <li><a href="vindinium.html"> Vindinium How To</a> </li>
+            <li><a href="#"> Big Project </a> </li>
+        </ul>
+        <h1> Vindinium How To</h1>
+        
+<p> My code has variables for my bot to know what to do and how to do it (like attack other bots, take mines, and get health). There are also tasks and if statements with comments that describe what the bot needs to do so it knows how to do them.</p>
+<p> <code>
+    <pre>
+var Bot = require('bot');
+var PF = require('pathfinding');
+var bot = new Bot('oklccmrl', 'arena', 'http://v.summitdevclub.com:9000'); 
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+       
+       <b> // myDir is set to what we want the direction to be based on our decisions</b>
+        var myDir;
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+
+       <b> // enemyBots is a list of bots other than my own</b>
+        var enemyBots = [];
+        if(bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+        if(bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+        if(bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+        if(bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+        
+        <b>// Concats the enemy mines so my bot knows whose mines to take from</b>
+        var enemymines = [];
+        enemymines = enemymines.concat(enemyBots[0].mines);
+        enemymines = enemymines.concat(enemyBots[1].mines);
+        enemymines = enemymines.concat(enemyBots[2].mines);
+        
+        
+        /*                                      *
+         * This Code Decides WHAT to do         *
+         *                                      */
+        var task;
+        
+        <b>// Coding for my bot to know who the richest enemy bot is so it knows who to go after</b>
+        var richestEnemyBot = enemyBots[0];
+        for (i = 1; i < enemyBots.length; i++) {
+            if (richestEnemyBot.mineCount < enemyBots[i].mineCount) {
+                richestEnemyBot = enemyBots[i];
+            }
+        }
+
+        <b>// Tasks that my bot has been programmed to do</b>
+        
+        
+        if (bot.yourBot.life < 50) { 
+            <b>// if health is below 50, we need to get health</b>
+            task = "get health";
+        }
+        else if(bot.yourBot.life > richestEnemyBot.life && bot.findDistance(myPos, richestEnemyBot.posArray)){ 
+            <b>// if our life is the highest, attack other bots because we will kill them and survive</b>
+            task = "attack other bots";
+        }
+        else if(bot.yourBot.life < 75){ 
+            <b>// Take mines from the enemy bots</b>
+            task = "take mines from enemies";
+        }
+        else { 
+            <b>// Take neutral mines for your own</b>
+            task = "take free mines for yourself";
+        }
+
+        /*                                      *
+         * This Code Determines HOW to do it    *
+         *                                      */
+        
+        if (task === "attack other bots"){
+           <b> // Attack the richest enemy bot</b>
+            console.log("Attack other bots");
+            myDir = bot.findPath(myPos, richestEnemyBot.posArray);
+        }
+        
+        if (task === "get health"){
+            <b>// Need health, so let's find the closest tavern</b>
+            var nearestTavern = bot.taverns[0];
+            for(var i = 0; i < bot.taverns.length; i++){
+               if (bot.findDistance(myPos, nearestTavern) > bot.findDistance(myPos, bot.taverns[i])) {
+                    nearestTavern = bot.taverns[i];
+               }
+            }
+            console.log("Find a Tavern and get health!");
+            myDir = bot.findPath(myPos, nearestTavern);
+        }
+        
+        if(task === "take free mines for yourself") {
+            <b>// Look for the closest mine</b>
+            var closestMine = bot.freeMines[0];
+            for(i = 0; i < bot.freeMines.length; i++) {
+                if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+                }
+            }
+            console.log("Claiming a Free Mine!");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        
+        if (task === "take mines from enemies") {
+            <b>// Go to the closest enemy mine</b>
+            var closestEnemyMine = enemymines[0];
+            for(i = 0; i < enemymines.length; i++) {
+                if(bot.findDistance(myPos, closestEnemyMine) > bot.findDistance(myPos, enemymines[i])) {
+                    closestEnemyMine = enemymines[i];
+                }
+            }
+            console.log("Take Mines from Enemeies");
+            myDir = bot.findPath(myPos, closestEnemyMine);
+        }
+        
+        <b>// Sets the direction based on myDir. If we do not have a direction, go randomly</b>
+        if(myDir === "none") {
+            console.log("Going Random!");
+            var rand = Math.floor(Math.random() * 4);
+            var dirs = ["north", "south", "east", "west"];
+            bot.goDir = dirs[rand];
+        } else {
+            bot.goDir = myDir;
+        }
+    </pre>
+</code> </p> 
+<h2> What my bot does and how it does those things</h2>
+<p> My bot collects taverns when its health is below 50, attacks the bot that is currently winning, and takes their mines, as well as taking free mines. The javascript coding has tasks like "get health", "attack other bots", "take mines from enemies", and "take free mines for yourself". I would use these tasks in if statements with else ifs and set myDir with an array.</p>
+
+<h2> Getting Taverns</h2>
+<img src="Screenshot 2017-02-16 at 8.26.52 PM.png" alt="Low health on my bot" style="width:400px;height:300px;">
+
+<img src="Screenshot 2017-02-16 at 8.39.24 PM.png" alt="My bot getting a tavern" style="width:400px;height:300px;">
+<p> Taverns are places bots go to when their health is below a certain number. They need to keep their health so that they do not die and lose all their mines. My bot is the one in the yellow and in the first screenshot it has low health. In the other image my bot went to a tavern and it now has more health.</p>
+
+<h2> Attacking other bots</h2>
+<img src="Screenshot 2017-02-16 at 8.44.40 PM.png" alt="My bot attacking" style="width:400px;height:300px;">
+
+<img src="Screenshot 2017-02-16 at 8.48.14 PM.png" alt="My bot attacking" style="width:400px;height:300px;">
+<p> Bots attack each other because when a bot dies, the bot that killed it takes all of its mines. In the first image above, a lot of those mines are red, but they all turn yellow after the red bot died.</p> 
+
+<h2> Taking mines</h2>
+<img src="Screenshot 2017-02-17 at 8.45.23 AM.png" alt="My bot before getting any mines" style="width:400px;height:300px;">
+
+<img src="Screenshot 2017-02-17 at 8.49.35 AM.png" alt="My bot after getting mines" style="width:400px;height:300px;">
+
+<p> If a mine is the same color as your bot, then it has already claimed this mine. If it has a different color than your bot, and your bot attempts to take that mine from that enemy bot, it will fight the goblin guarding the mine and the color inside the mine will change to the color of your bot. In this battle my bot is the green bot and as you can see there are no green mines yet. But later on in the battle, there are a lot of green mines and it now has some gold. </p> 
+
+<h2> How to win the game</h2>
+<img src="Screenshot 2017-02-17 at 9.37.39 AM.png" alt="Mybot won this battle" style="width:400px;height:300px;">
+
+<p> The winning bot is the bot that has the most gold by the time the game has passed 1200 turns. In the image above my bot won the battle because it had more gold than any of the other bots in the game.</p>
+
+<h2> What I learned about AI</h2>
+<p> I learned that AI is that they do not just need to be robots but rather computer generated bots with only javascript coding.</p>
+
+<h2> Making my bot</h2>
+<p> My bot actually did exactly what I programmed it to do. It was doing good in battles and even won a battle. I programmed it to take mines from the winning bot, to get free mines, and to go to taverns when health was below 50, and in battles it would do all of that just fine.</p>
+ <p> It was somewhat complicated to program it this way because sometimes I would confuse the codes but I would get help and I was able to make my bot play in the game  </p>
+ 
+ <h2> How my opnion of AI has changed</h2>
+ <p> Before this project I never thought that I would ever create my own AI. I knew about it though, but I did not understand how it works. However I was able to have fun after programming my own AI and I understand it more now than before this project.</p>
+
+    </body>
+    </html>
