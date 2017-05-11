@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="navbar.css" type="text/css" />
+        <link rel="stylesheet" type="text/css" />
+        <title>Big Project</title>
+        <style>
+            body{
+                background-color:white;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <ul id="navbar">
+            <li><a href="index.html#AboutMe"> About Me </a> </li>
+            <li><a href="Hardware.html"> Hardware </a> </li>
+            <li><a href="howtohardware.html"> How To </a> </li>
+            <li><a href="changer.html"> Background Color Changer</a></li>
+            <li><a href="calculator.html"> Calculator </a> </li>
+            <li><a href="todolist.html"> Todo List </a> </li>
+            <li><a href="howtocalculator.html"> How To #2 </a></li>
+            <li><a href="vindinium.html"> Vindinium How To</a> </li>
+            <li><a href="sudokubigproject.html"> Big Project </a> </li>
+            <li><a href="sudokuhowto.html"> How To #3 </a></li>
+        </ul>
+        <h1> How To</h1>
+        <p> 
+        <b>// Store the new game button in a variable </b> </p>
+        <p>  var newGameButton = document.getElementById("startnewgame");</p>
+    This variable is the variable I used to make the new game button that when pushed, it will generate numbers on certain cells in the sudoku game.
+    This is what will start the game, which the function is given to it by
+    the get element by id with the function, "startnewgame".
+    <p> <b>// Store all the sudoku cells in an array variable </b> </p>
+    <p> var cells = document.getElementsByClassName("cell");</p>
+    <p> This is an array that makes the small sections, rows, and columns of the sudoku.
+    They are in boxes and small sections are a tiny bit apart from each other.
+    They also have dropdown menus containing the numbers you put into the cell for 
+    every cell. They all have the class name "cell".</p>
+    <p> <b>// React to the button that starts a new game when clicked</b>
+newGameButton.addEventListener("click", function() {</p>
+    <p> This add event listener will give the new game button the function of 
+    showing the numbers when clicked. It has the function from the add
+    event listener which gives it the specific function to make certain cells 
+    have certain numbers in them.</p>
+    <img src="Screenshot 2017-05-11 at 1.20.24 PM.png" alt="Empty sudoku puzzle" style="width:400px;height:300px;">
+    <img src="Screenshot 2017-05-11 at 1.25.19 PM.png" alt="After clicking new game button" style="width:400px;height:300px;">
+   <p> As you can see, in the first image, there are no numbers, but when
+   I clicked the New Game button, the numbers already placed are shown and 
+   you can start trying to solve the puzzle.</p>
+   <p><b> // Sets all number boxes to empty </b></p>
+   <p> for (var i in cells) {</p>
+        <p>cells[i].value = 0;</p>
+    <p>}</p>
+    <p> This will make all the boxes initially not have a number before
+    the new game button is clicked. Their value is 0, which means no number in
+    the cell, the for is the variable that applies to all cells. As
+    shown in the images below, I have not clicked the new game button
+    and there are no numbers in any cell, only after I click the 
+    New Game button.</p>
+    <img src="Screenshot 2017-05-11 at 1.20.24 PM.png" alt="Empty sudoku puzzle" style="width:400px;height:300px;">
+  <p> <b>// Initialize the new game numbers</b></p>
+   <p>cells[0].value = 7;
+   <p>cells[2].value = 4;
+   <p>cells[3].value = 1;
+   <p>cells[9].value = 5;
+   <p>cells[10].value = 9;
+   <p>cells[11].value = 8;
+   <p>cells[14].value = 2;
+   <p>cells[24].value = 1;
+   <p>cells[25].value = 8;
+   <p>cells[26].value = 6;
+   <p>cells[28].value = 2;
+   <p>cells[30].value = 8;
+   <p>cells[32].value = 1;
+   <p>cells[35].value = 5;
+   <p>cells[37].value = 7;
+   <p>cells[39].value = 3;
+   <p>cells[41].value = 4;
+   <p>cells[65].value = 1;</p>
+});</p>  
+  <p> These are the values of the cells. The number in the brackets have
+  the cell number after that have the number before the semicolon. When
+  the new game button is clicked, these numbers will be shown in their repsective 
+  cell number. As shown in the image below, this is the numbers already in 
+  cells, and as mentioned earlier, the numbers are in the cell after the 
+  one shown in brackets in the code above (for example, the last number is a 
+  number one which the code makes it in cell 66 when the code to put it 
+  in that cell has a 65 in the brackets.</p>  
+    <img src="Screenshot 2017-05-11 at 1.25.19 PM.png" alt="After clicking new game button" style="width:400px;height:300px;">
+    <p> <b>// Add a listener to each sudoku cell to detect collisions with rows</b></p>
+<p><b>// columns, or sections which might have the same selected number</b></p>
+for (var i in cells) {
+    <p>cells[i].addEventListener("change", function() {</p>
+    <p> This variable and add event listener make it so that it detects
+    if a row, column, or small section has two or more of the same number 
+    and it turns all of their cells red until a different number is placed 
+    that is different from one of the red numbers into all the red cells.
+    As shown in the image below, the ones' cells are red because two of 
+    them are in the same small section, one of them is in the same row as 
+    another one, and it is also in the same column as another one.</p>
+    <img src="Screenshot 2017-05-11 at 1.34.11 PM.png" alt="A collision has happened" style="width:400px;height:300px;">
+    <p><b>// Get selected value for this cell. The "this" variable holds</b>
+     <p>  <b> // the object</b>
+      <p>  <b>// the id of the object is a 3 digit number of the format:</b>
+       <p><b> // section/row/column. We get the id to determine these values</b>
+        <p>var selectedvalue = this.value;
+        <p>var selectedid = this.id;
+        <p>var selectedsection = selectedid[0];
+        <p>var selectedcolumn = selectedid[2];
+        <p>var selectedrow = selectedid[1];
+    <p> These variables have the ids of the cells and their values (Like
+    the first cell's id is "111" and the top left hand corner of the second
+    small section is "214", etc.). The section is the first digit, the 
+    row is the second digit and the last is the column.</p>
+    <p>
+       <p><b> // Go over all other cells and if we have the same row, column,</b></p>
+       <p><b> // or section and we have the same selected value, we have a collision,</b></p>
+       <p><b> // the selected value is wrong</b></p>
+        <p>for (var j in cells) {</p>
+            <p>cells[j].style.backgroundColor = "";</p>
+            <p>if (this.id != cells[j].id) {</p>
+            <p> This code makes it so that collisions can happen with more
+            than two cells, as shown in the image below. It also makes it so 
+            that no other cells change color other than the ones that are 
+            in the collision.</p>
+                <img src="Screenshot 2017-05-11 at 1.34.11 PM.png" alt="A collision has happened" style="width:400px;height:300px;">
+    <p> <b>// Get the section, row, column, and value to compare to the </b></p>
+               <p> <b>// selected cell</b></p>
+               
+                <p>var cellvalue = cells[j].value;</p>
+                <p>var cellid = cells[j].id;</p>
+                <p>var cellsection = cellid[0];</p>
+                <p>var cellcolumn = cellid[2];</p>
+                <p>var cellrow = cellid[1];</p>
+                <p>if (selectedrow == cellrow ||</p>
+                    <p>selectedcolumn == cellcolumn ||</p>
+                    <p>selectedsection == cellsection) {</p>
+                    <p>if (selectedvalue == cellvalue) {</p>
+    <p> <b>// We have a collision, make both the selected cell and the</b></p>
+                       <p> <b>// colliding cell red</b></p>
+                        
+                        <p>this.style.backgroundColor = "red";</p>
+                        <p>cells[j].style.backgroundColor = "red";</p>
+    <p> This code detects collisions and determines exactly what color 
+    two or more cells will turn if there is a collision. The 
+    style.backgroundcolor is red and the second line of this code
+    has cells and the style.backgroundcolor to make the cells turn
+    red during collisions. The style.background.color also determines what
+    color the cells in a collision turn into in the collision. As shown in 
+    the image below, the collision cells are specifically turned red and
+    not blue or green or yellow.</p>
+       <img src="Screenshot 2017-05-11 at 1.34.11 PM.png" alt="A collision has happened" style="width:400px;height:300px;"> 
+    
+    
+    
+    
+    
+    </body>
+</html>

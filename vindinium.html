@@ -20,7 +20,8 @@
             <li><a href="todolist.html"> Todo List </a> </li>
             <li><a href="howtocalculator.html"> How To #2 </a></li>
             <li><a href="vindinium.html"> Vindinium How To</a> </li>
-            <li><a href="#"> Big Project </a> </li>
+            <li><a href="sudokubigproject.html"> Big Project </a> </li>
+            <li><a href="sudokuhowto.html"> How To #3 </a></li>
         </ul>
         <h1> Vindinium How To</h1>
         
@@ -150,18 +151,124 @@ Bot.prototype.botBrain = function() {
 <img src="Screenshot 2017-02-16 at 8.26.52 PM.png" alt="Low health on my bot" style="width:400px;height:300px;">
 
 <img src="Screenshot 2017-02-16 at 8.39.24 PM.png" alt="My bot getting a tavern" style="width:400px;height:300px;">
+
+<h3> What to do</h3>
+<code>
+    <pre>
+        if (bot.yourBot.life < 50) { 
+            // if health is below 50, we need to get health
+            task = "get health";
+        }
+    </pre>
+</code>
+<p> The if statement makes my bot go to taverns if its life is less than 50. The task is "get health" so my bot knows it needs to get health.</p>
+<h3> How to do it</h3>
+<code>
+    <pre>
+        if (task === "get health"){
+            // Need health, so let's find the closest tavern
+            var nearestTavern = bot.taverns[0];
+            for(var i = 0; i < bot.taverns.length; i++){
+               if (bot.findDistance(myPos, nearestTavern) > bot.findDistance(myPos, bot.taverns[i])) {
+                    nearestTavern = bot.taverns[i];
+               }
+            }
+            console.log("Find a Tavern and get health!");
+            myDir = bot.findPath(myPos, nearestTavern);
+        }
+    </pre>
+</code>
+<p> The if statement says the task of what to do and the variable detects the nearest tavern. The myDir finds the distance to the nearest tavern.</p>
+
 <p> Taverns are places bots go to when their health is below a certain number. They need to keep their health so that they do not die and lose all their mines. My bot is the one in the yellow and in the first screenshot it has low health. In the other image my bot went to a tavern and it now has more health.</p>
 
 <h2> Attacking other bots</h2>
 <img src="Screenshot 2017-02-16 at 8.44.40 PM.png" alt="My bot attacking" style="width:400px;height:300px;">
 
 <img src="Screenshot 2017-02-16 at 8.48.14 PM.png" alt="My bot attacking" style="width:400px;height:300px;">
+
+<h3> What to do</h3>
+<code>
+    <pre>
+         var task;
+        
+        // Coding for my bot to know who the richest enemy bot is so it knows who to go after
+        var richestEnemyBot = enemyBots[0];
+        for (i = 1; i < enemyBots.length; i++) {
+            if (richestEnemyBot.mineCount < enemyBots[i].mineCount) {
+                richestEnemyBot = enemyBots[i];
+            }
+        }
+        
+        else if(bot.yourBot.life > richestEnemyBot.life && bot.findDistance(myPos, richestEnemyBot.posArray)){ 
+            // if our life is the highest, attack other bots because we will kill them and survive
+            task = "attack other bots";
+        }
+    </pre>
+</code>
+<p> The variable is the richest enemy bot so that my bot could go after the bot that is currently winning. The else if programs my bot so it can attack other bots if it has more health than the richest enemy bot</p>
+<h3> How to do it</h3>
+<code>
+    <pre>
+        if (task === "attack other bots"){
+            // Attack the richest enemy bot
+            console.log("Attack other bots");
+            myDir = bot.findPath(myPos, richestEnemyBot.posArray);
+        }
+    </pre>
+</code>
+<p> The task is "attack other bots" so that my bot knows how to attack enemy bots. The myDir sets the direction to the bot that is currently winning.</p>
+
 <p> Bots attack each other because when a bot dies, the bot that killed it takes all of its mines. In the first image above, a lot of those mines are red, but they all turn yellow after the red bot died.</p> 
 
 <h2> Taking mines</h2>
 <img src="Screenshot 2017-02-17 at 8.45.23 AM.png" alt="My bot before getting any mines" style="width:400px;height:300px;">
 
 <img src="Screenshot 2017-02-17 at 8.49.35 AM.png" alt="My bot after getting mines" style="width:400px;height:300px;">
+
+<h3> What to do</h3>
+<code>
+    <pre>
+        else if(bot.yourBot.life < 75){ 
+            // Take mines from the enemy bots
+            task = "take mines from enemies";
+        }
+        else { 
+            // Take neutral mines for your own
+            task = "take free mines for yourself";
+        }
+    </pre>
+</code>
+<p> The else if programs my bot to take enemy mines as shown in the task. The else programs it to take neutrl mines.</p>
+<h3> How to do it</h3>
+<code>
+    <pre>
+        if(task === "take free mines for yourself") {
+            // Look for the closest mine
+            var closestMine = bot.freeMines[0];
+            for(i = 0; i < bot.freeMines.length; i++) {
+                if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+                }
+            }
+            console.log("Claiming a Free Mine!");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        
+        if (task === "take mines from enemies") {
+            // Go to the closest enemy mine
+            var closestEnemyMine = enemymines[0];
+            for(i = 0; i < enemymines.length; i++) {
+                if(bot.findDistance(myPos, closestEnemyMine) > bot.findDistance(myPos, enemymines[i])) {
+                    closestEnemyMine = enemymines[i];
+                }
+            }
+            console.log("Take Mines from Enemeies");
+            myDir = bot.findPath(myPos, closestEnemyMine);
+        }
+    </pre>
+</code>
+<p> The if statement's condition has the task "take free mines for yourself so that my bot knows to take neutral mines. The bot.findDistance finds the distance between my bot and the cloests neutral mine. The other task is for my bot to know to take mines from enemy bots. The bot.findDistance is for my bot to know the distance between it and the nearest enemy mine. The myDir finds the path to either the closest neutral mine and the closest enemy mine.</p>
 
 <p> If a mine is the same color as your bot, then it has already claimed this mine. If it has a different color than your bot, and your bot attempts to take that mine from that enemy bot, it will fight the goblin guarding the mine and the color inside the mine will change to the color of your bot. In this battle my bot is the green bot and as you can see there are no green mines yet. But later on in the battle, there are a lot of green mines and it now has some gold. </p> 
 

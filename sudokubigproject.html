@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <link rel="stylesheet" href="navbar.css" type="text/css" />
+        <link rel="stylesheet" href="sudokuproject.css" type="text/css" />
+        <title>Big Project</title>
+        <style>
+            body{
+                background-color:white;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <ul id="navbar">
+            <li><a href="index.html#AboutMe"> About Me </a> </li>
+            <li><a href="Hardware.html"> Hardware </a> </li>
+            <li><a href="howtohardware.html"> How To </a> </li>
+            <li><a href="changer.html"> Background Color Changer</a></li>
+            <li><a href="calculator.html"> Calculator </a> </li>
+            <li><a href="todolist.html"> Todo List </a> </li>
+            <li><a href="howtocalculator.html"> How To #2 </a></li>
+            <li><a href="vindinium.html"> Vindinium How To</a> </li>
+            <li><a href="sudokubigproject.html"> Big Project </a> </li>
+            <li><a href="sudokuhowto.html"> How To #3 </a></li>
+        </ul>
+        
+        <p class="projectname">Sudoku Puzzle</p>
+        
+        <button id="startnewgame"> New Game </button><br/><br/>
+        
+        <!-- The sudoku puzzle has 9 by 9 cells. Also, it has 9 sections,
+        of 3 by 3 cells. 
+        
+        To represent the sudoku board we first create a table of 3 by 3
+        for the sections, and for each section we have a subtable of 3 by 3
+        to hold the sudoku cells.
+        
+        Each sudoku cell is a select tag with options from 0 to 9 with 0 meaning
+        unselected.-->
+        
+        <table class="maintable"> 
+        <tr> 
+            <td> 
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="111">
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="112"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="113"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="121"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="122"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="123"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="131"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="132"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="133"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="214"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="215"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="216"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="224"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="225"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="226"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="234"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="235"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="236"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="317"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="318"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="319"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="327"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="328"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="329"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="337"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="338"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="339"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr> 
+            <td>
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="441"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="442"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="443"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="451"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="452"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="453"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="461"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="462"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="463"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="544"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="545"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="546"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="554"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="555"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="556"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="564"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="565"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="566"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td> 
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="647"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="648"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="649"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="657"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="658"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="659"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="667"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="668"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="669"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            
+            </td>
+        </tr>
+        <tr> 
+            <td> 
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="771"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="772"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="773"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="781"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="782"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="783"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="791"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="792"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="793"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            
+            </td>
+            <td> 
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="874"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="875"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="876"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="884"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="885"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="886"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="894"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="895"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="896"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            
+            </td>
+            <td> 
+                <table class="section">
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="977"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="978"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="979"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="987"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="988"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="989"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                            <select class="cell" id="997"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="998"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                        <td> 
+                            <select class="cell" id="999"> 
+                                <option value="0"> </option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            
+            </td>
+        </tr>
+        
+        
+        </table>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+        
+        <script src="sudokubigproject.js"></script>
+    </body>
+</html>

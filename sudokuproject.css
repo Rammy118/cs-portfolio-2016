@@ -1,0 +1,24 @@
+.section td{
+    border: 1px solid black;
+}
+
+.section {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.section select {
+    font-size: 150%;
+}
+
+.projectname {
+    font-family: comic sans MS;
+    font-size: 32px;
+    font-style: italic;
+    color: #CC0000;
+}
+
+#startnewgame {
+    font-family: comic sans MS;
+    font-size: 18px;
+}
