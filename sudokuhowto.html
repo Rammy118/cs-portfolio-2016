@@ -52,6 +52,7 @@ newGameButton.addEventListener("click", function() {</p>
    <p> for (var i in cells) {</p>
         <p>cells[i].value = 0;</p>
     <p>}</p>
+    <p> <b>&lt;!-- The sudoku puzzle has 9 by 9 cells. Also, it has 9 sections,<br/>        of 3 by 3 cells. <br/>        <br/>        To represent the sudoku board we first create a table of 3 by 3<br/>        for the sections, and for each section we have a subtable of 3 by 3<br/>        to hold the sudoku cells.<br/>        <br/>        Each sudoku cell is a select tag with options from 0 to 9 with 0 meaning<br/>        unselected.--&gt;</p>
     <p> This will make all the boxes initially not have a number before
     the new game button is clicked. Their value is 0, which means no number in
     the cell, the for is the variable that applies to all cells. As
