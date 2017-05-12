@@ -52,7 +52,11 @@ newGameButton.addEventListener("click", function() {</p>
    <p> for (var i in cells) {</p>
         <p>cells[i].value = 0;</p>
     <p>}</p>
-    <p> <b>&lt;!-- The sudoku puzzle has 9 by 9 cells. Also, it has 9 sections,<br/>        of 3 by 3 cells. <br/>        <br/>        To represent the sudoku board we first create a table of 3 by 3<br/>        for the sections, and for each section we have a subtable of 3 by 3<br/>        to hold the sudoku cells.<br/>        <br/>        Each sudoku cell is a select tag with options from 0 to 9 with 0 meaning<br/>        unselected.--&gt;</p>
+    <p> <b>&lt;!-- The sudoku puzzle has 9 by 9 cells. Also, it has 9 sections,<br/>        
+    of 3 by 3 cells. <br/> <br/>To represent the sudoku board we first create a table of 3 by 3<br/>        
+    for the sections, and for each section we have a subtable of 3 by 3<br/>        
+    to hold the sudoku cells.<br/> <br/>Each sudoku cell is a select tag with options from 0 to 9 with 0 meaning<br/>        
+    unselected.--&gt;</b></p>
     <p> This will make all the boxes initially not have a number before
     the new game button is clicked. Their value is 0, which means no number in
     the cell, the for is the variable that applies to all cells. As
@@ -61,7 +65,7 @@ newGameButton.addEventListener("click", function() {</p>
     New Game button.</p>
     <img src="Screenshot 2017-05-11 at 1.20.24 PM.png" alt="Empty sudoku puzzle" style="width:400px;height:300px;">
   <p> <b>// Initialize the new game numbers</b></p>
-   <p>cells[0].value = 7;
+   <p><b>cells[0].value = 7;
    <p>cells[2].value = 4;
    <p>cells[3].value = 1;
    <p>cells[9].value = 5;
@@ -79,7 +83,7 @@ newGameButton.addEventListener("click", function() {</p>
    <p>cells[39].value = 3;
    <p>cells[41].value = 4;
    <p>cells[65].value = 1;</p>
-});</p>  
+});</b></p>  
   <p> These are the values of the cells. The number in the brackets have
   the cell number after that have the number before the semicolon. When
   the new game button is clicked, these numbers will be shown in their repsective 
